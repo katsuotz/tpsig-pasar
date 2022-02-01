@@ -13,38 +13,41 @@
 <div>
     <div id="map"></div>
 
-    <br>
-    <a href="add-pasar.php">Tambah Pasar</a>
-    <br>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama Pasar</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        $sql = "SELECT * FROM pasar";
-        $query = mysqli_query($db, $sql);
-        while ($pasar = mysqli_fetch_array($query)) {?>
+    <p class="map-info">*Klik marker pada map untuk mengetahui Nama Pasar</p>
+
+    <div class="container">
+        <a href="add-pasar.php">Tambah Pasar</a>
+        <br>
+        <table class="table">
+            <thead>
             <tr>
-            <td><?= $pasar['id'] ?></td>
-            <td><?= $pasar['nama_pasar'] ?></td>
-            <td><?= $pasar['latitude'] ?></td>
-            <td><?= $pasar['longitude'] ?></td>
-            <td>
-            <a href="edit-pasar.php?id=<?= $pasar['id'] ?>">Edit</a> |
-            <a href="delete.php?id=<?= $pasar['id'] ?>">Delete</a>
-            </td>
+                <th>No</th>
+                <th>Nama Pasar</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th></th>
             </tr>
-        <?php } ?>
-        </tbody>
-    </table>
-    <p>Total: <?php echo mysqli_num_rows($query) ?></p>
+            </thead>
+            <tbody>
+            <?php
+            $sql = "SELECT * FROM pasar";
+            $query = mysqli_query($db, $sql);
+            while ($pasar = mysqli_fetch_array($query)) { ?>
+                <tr>
+                    <td><?= $pasar['id'] ?></td>
+                    <td><?= $pasar['nama_pasar'] ?></td>
+                    <td><?= $pasar['latitude'] ?></td>
+                    <td><?= $pasar['longitude'] ?></td>
+                    <td>
+                        <a href="edit-pasar.php?id=<?= $pasar['id'] ?>">Edit</a> |
+                        <a href="delete.php?id=<?= $pasar['id'] ?>">Delete</a>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+        <p>Total: <?php echo mysqli_num_rows($query) ?></p>
+    </div>
 </div>
 
 <script src="./assets/leaflet/leaflet.js"></script>
@@ -70,13 +73,13 @@
       $sql = "SELECT * FROM pasar";
       $query = mysqli_query($db, $sql);
       while ($pasar = mysqli_fetch_array($query)) {?>
-        L.marker([<?= $pasar['latitude'] ?>, <?= $pasar['longitude'] ?>], {
-          title: "<?= $pasar['nama_pasar'] ?>"
-        }).addTo(map).on('click', function (e) {
-          alert(e.target.options.title)
-          // console.log(e, e.target.options)
-        })
-    <?php } ?>
+    L.marker([<?= $pasar['latitude'] ?>, <?= $pasar['longitude'] ?>], {
+      title: "<?= $pasar['nama_pasar'] ?>"
+    }).addTo(map).on('click', function (e) {
+      alert(e.target.options.title)
+      // console.log(e, e.target.options)
+    })
+      <?php } ?>
   });
 </script>
 </body>
