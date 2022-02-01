@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$user = "phpmyadmin";
-$password = "P@ssw0rdnyaphp";
-$nama_database = "tpsig-pasar";
+$user = "root";
+$password = "";
+$nama_database = "tpsig_pasar";
 
 $db = mysqli_connect($server, $user, $password, $nama_database);
 
