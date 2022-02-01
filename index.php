@@ -29,11 +29,12 @@
             </thead>
             <tbody>
             <?php
-            $sql = "SELECT * FROM pasar";
+            $sql = "SELECT * FROM pasar ORDER BY nama_pasar ASC";
             $query = mysqli_query($db, $sql);
+            $i = 0;
             while ($pasar = mysqli_fetch_array($query)) { ?>
                 <tr>
-                    <td><?= $pasar['id'] ?></td>
+                    <td><?= ++$i ?></td>
                     <td><?= $pasar['nama_pasar'] ?></td>
                     <td><?= $pasar['latitude'] ?></td>
                     <td><?= $pasar['longitude'] ?></td>
