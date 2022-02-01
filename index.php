@@ -13,9 +13,8 @@
 <div>
     <div id="map"></div>
 
-    <p class="map-info">*Klik marker pada map untuk mengetahui Nama Pasar</p>
-
     <div class="container">
+        <p class="map-info">*Klik marker pada map untuk mengetahui Nama Pasar</p>
         <a href="add-pasar.php">Tambah Pasar</a>
         <br>
         <table class="table">
